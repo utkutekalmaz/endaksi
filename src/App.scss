@@ -81,6 +81,13 @@ body {
   -webkit-transition: 1s;
   -o-transition: 1s;
   transition: 1s;
+  overflow: hidden;
+
+  &:active {
+    transform: scale(1.1);
+    color: $main-bg;
+    background-color: $main-text;
+  }
 }
 
 .memo-name {
@@ -95,9 +102,6 @@ body {
   justify-content: start;
   padding-left: 15px;
   font-size: small;
-  &:active {
-    background-color: $accent-text;
-  }
 }
 
 .btn-group {
@@ -120,11 +124,21 @@ body {
   border: 0px solid black;
   //padding: 0px 15px 0px 15px;
   background-color: $accent-text;
+  &:active {
+    filter: invert(80%);
+  }
+}
+
+.edit {
+  border-left: 0px solid transparent;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .remove {
   border-right: 0px solid transparent;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .add-btn {
