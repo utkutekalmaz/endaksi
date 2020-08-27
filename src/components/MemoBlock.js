@@ -1,6 +1,12 @@
 import React from 'react';
 
-const MemoBlock = ({ name, val }) => {
+/**
+ *
+ * @param {string} name display name
+ * @param {string} val value to be stored
+ * @param {function} edit callback function for editing
+ */
+const MemoBlock = ({ name, val, edit }) => {
   const copyToClipboard = () => {
     const el = document.createElement('textarea');
     el.value = val;
@@ -8,6 +14,8 @@ const MemoBlock = ({ name, val }) => {
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
+    console.log(`— C O P Y —`);
+    console.log({ name, val });
   };
 
   return (
@@ -16,7 +24,14 @@ const MemoBlock = ({ name, val }) => {
         {name}
       </div>
       <div className="btn-group">
-        <button className="edit">&#9998;</button>
+        <button
+          className="edit"
+          onClick={() => {
+            edit({ name, val });
+          }}
+        >
+          &#9998;
+        </button>
         <button className="remove">&#10006;</button>
       </div>
     </div>

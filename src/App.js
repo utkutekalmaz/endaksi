@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import MemoBlock from './components/MemoBlock';
 import AddButton from './components/AddButton';
+import Modal from './components/Modal';
 
 const mock = [
   {
@@ -32,17 +33,28 @@ const mock = [
 ];
 
 function App() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [current, setCurrent] = useState({ name: '', val: '' });
+
+  const editValue = ({ name, val }) => {
+    setCurrent({ name, val });
+    setModalOpen(true);
+    console.log(`— E D I T —`);
+    console.log({ name, val });
+  };
+
   return (
     <div className="App">
       <>
         <h1 className="app-header">endaksi ?!</h1>
         <div className="memo-container">
           {mock.map((c) => (
-            <MemoBlock name={c.name} val={c.val} />
+            <MemoBlock name={c.name} val={c.val} edit={editValue} />
           ))}
         </div>
         <AddButton />
       </>
+      <Modal isOpen={modalOpen} predefined={current} />
     </div>
   );
 }
