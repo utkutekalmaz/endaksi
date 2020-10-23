@@ -1,8 +1,8 @@
 import React from 'react';
 
-const AddButton = () => {
+const AddButton = (props) => {
   return (
-    <button class="add-btn ripple">
+    <button onClick={props.openModal} class="add-btn ripple">
       <span>A D</span>
       <br />
       <span>+ D</span>

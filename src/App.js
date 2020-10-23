@@ -43,6 +43,10 @@ function App() {
     console.log({ name, val });
   };
 
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
   return (
     <div className="App">
       <>
@@ -52,7 +56,7 @@ function App() {
             <MemoBlock name={c.name} val={c.val} edit={editValue} />
           ))}
         </div>
-        <AddButton />
+        <AddButton openModal={openModal} />
       </>
       <Modal isOpen={modalOpen} predefined={current} />
     </div>
